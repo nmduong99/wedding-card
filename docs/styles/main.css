@@ -9756,7 +9756,9 @@ body {
 
 /* Home Page Style */
 .ww-home-page {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.jpg") no-repeat top center;
+    position: relative; /* Necessary for padding-top to work correctly */
+    padding-top:66.67%; /* 100% / 1.7778 (image aspect ratio) */ 
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.jpg") no-repeat center center;
     background-size: cover;
     /* background-position: 50%; */
     height: 100vh;
@@ -9775,14 +9777,14 @@ body {
 }
 
 .ww-home-page .ww-wedding-announcement .ww-announcement-container {
-    max-width: 600px;
+    /*max-width: 1600px;*/
     text-align: center;
     z-index: 999;
 }
 
 .ww-home-page .ww-wedding-announcement img {
-    max-height: 350px;
-    width: auto;
+    /*max-height: 350px;*/
+    width: inherit;
 }
 
 @media (max-width: 480px) {
@@ -9793,14 +9795,28 @@ body {
 }
 .ww-home-page .ww-wedding-announcement .ww-couple-name {
     font-size: 70px;
+
 }
 .ww-couple-name {
+  font-size: 4.0em;
   text-align: center; /* Căn giữa văn bản */
+  position: absolute; /* Đặt phần tử thành vị trí tuyệt đối */
+  top: 50px; /* Khoảng cách từ đỉnh của container */
+  left: 50%; /* Căn giữa theo chiều ngang */
+  transform: translateX(-50%); /* Điều chỉnh để căn giữa hoàn hảo */
+  
+        white-space: nowrap; /* Giữ nguyên khoảng trắng và xuống dòng */
 }
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .ww-home-page .ww-wedding-announcement .ww-couple-name {
-        font-size: 50px;
-        white-space: pre; /* Giữ nguyên khoảng trắng và xuống dòng */
+        font-size: 30px;
+
+  text-align: center; /* Căn giữa văn bản */
+  position: absolute; /* Đặt phần tử thành vị trí tuyệt đối */
+  top: 50px; /* Khoảng cách từ đỉnh của container */
+  left: 50%; /* Căn giữa theo chiều ngang */
+  transform: translateX(-50%); /* Điều chỉnh để căn giữa hoàn hảo */
+        white-space: nowrap; /* Giữ nguyên khoảng trắng và xuống dòng */
     }
 }
 
