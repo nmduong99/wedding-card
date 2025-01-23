@@ -9756,7 +9756,7 @@ body {
 
 /* Home Page Style */
 .ww-home-page {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/main-background.jpeg") no-repeat top center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.jpg") no-repeat top center;
     background-size: cover;
     /* background-position: 50%; */
     height: 100vh;
@@ -9791,14 +9791,16 @@ body {
         width: auto;
     }
 }
-
 .ww-home-page .ww-wedding-announcement .ww-couple-name {
     font-size: 70px;
 }
-
+.ww-couple-name {
+  text-align: center; /* Căn giữa văn bản */
+}
 @media (max-width: 576px) {
     .ww-home-page .ww-wedding-announcement .ww-couple-name {
         font-size: 50px;
+        white-space: pre; /* Giữ nguyên khoảng trắng và xuống dòng */
     }
 }
 
