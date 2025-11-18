@@ -1,14 +1,7 @@
 // Add your javascript here
 // Don't forget to add it into respective layouts where this js file is needed
 $(document).ready(function () {
-    // Initialize ekko-lightbox for gallery
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox({
-            alwaysShowClose: true,
-            wrapping: true
-        });
-    });
+    // Custom lightbox is initialized automatically
 
     $("#map-image").on("click")
     {
