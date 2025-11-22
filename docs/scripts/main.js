@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 
     // Countdown Timer Configuration
-    const WEDDING_DATE = new Date('2025-02-25T14:00:00').getTime();
+    const WEDDING_DATE = new Date('2025-02-01T14:00:00').getTime();
     
     // Cache DOM elements for countdown
     const $countdownDays = $('#countdown-days');
