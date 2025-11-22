@@ -3,7 +3,7 @@
 .ww-journey-section {
     min-height: 100vh;
     padding: 100px 0;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -16,9 +16,9 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(ellipse at top right, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
-        radial-gradient(ellipse at bottom left, rgba(255, 107, 107, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at center, rgba(135, 168, 120, 0.05) 0%, transparent 60%);
+        radial-gradient(ellipse at top right, rgba(245, 138, 119, 0.03) 0%, transparent 40%),
+        radial-gradient(ellipse at bottom left, rgba(245, 138, 119, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at center, rgba(245, 138, 119, 0.02) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -31,15 +31,11 @@
 
 .journey-header h2 {
     font-family: 'Noto Serif KR', serif;
-    font-size: clamp(4rem, 10vw, 7rem);
-    font-weight: 300;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: 0.02em;
-    background: linear-gradient(to right, #faf8f3, #d4af37, #faf8f3);
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #f58a77;
     margin-bottom: 20px;
 }
 
@@ -48,13 +44,13 @@
     font-weight: 300;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(250, 248, 243, 0.4);
+    color: #6c757d;
     margin-top: 30px;
 }
 
 .journey-decorative-line {
-    height: 0.5px;
-    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3), transparent);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245, 138, 119, 0.3), transparent);
     margin: 50px auto;
     max-width: 100%;
     animation: lineGrow 1.5s ease-out forwards;
@@ -82,9 +78,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 0.5px;
+    width: 2px;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, #d4af37, #d4af37, transparent);
+    background: linear-gradient(to bottom, transparent, #f58a77, #f58a77, transparent);
     opacity: 0.2;
 }
 
@@ -157,7 +153,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(212, 175, 55, 0.5);
+    color: #f58a77;
     margin-bottom: 20px;
     font-family: 'Noto Serif KR', serif;
 }
@@ -165,8 +161,8 @@
 .milestone-title {
     font-family: 'Noto Serif KR', serif;
     font-size: 2.5rem;
-    font-weight: 300;
-    color: rgba(250, 248, 243, 0.9);
+    font-weight: 400;
+    color: #212529;
     margin-bottom: 20px;
     line-height: 1.2;
 }
@@ -179,7 +175,7 @@
 
 .milestone-description {
     font-size: 1rem;
-    color: rgba(250, 248, 243, 0.5);
+    color: #6c757d;
     font-weight: 300;
     line-height: 1.8;
     max-width: 400px;
@@ -197,8 +193,8 @@
 }
 
 .milestone-decorative {
-    height: 0.5px;
-    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245, 138, 119, 0.4), transparent);
     width: 50px;
     margin: 25px auto 0;
     transition: width 0.5s ease;
@@ -284,13 +280,13 @@
     bottom: 0;
     left: 0;
     border-radius: 50%;
-    border: 2px solid rgba(212, 175, 55, 0.2);
+    border: 3px solid rgba(245, 138, 119, 0.2);
     transition: all 0.5s ease;
 }
 
 .milestone-image-wrapper:hover .milestone-border-ring {
     transform: scale(1.05);
-    border-color: rgba(212, 175, 55, 0.4);
+    border-color: rgba(245, 138, 119, 0.5);
 }
 
 .milestone-border-inner {
@@ -300,7 +296,7 @@
     bottom: 8px;
     left: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(250, 248, 243, 0.1);
+    border: 1px solid rgba(245, 138, 119, 0.1);
     transition: all 0.7s ease;
 }
 
@@ -328,14 +324,14 @@
 }
 
 .footer-line {
-    height: 0.5px;
+    height: 1px;
     width: 96px;
-    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2));
+    background: linear-gradient(to right, transparent, rgba(245, 138, 119, 0.3));
     animation: lineGrowLeft 1.5s ease-out forwards;
 }
 
 .footer-line.right {
-    background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.2));
+    background: linear-gradient(to left, transparent, rgba(245, 138, 119, 0.3));
     animation: lineGrowRight 1.5s ease-out forwards;
 }
 
@@ -352,7 +348,7 @@
 .footer-dot {
     width: 8px;
     height: 8px;
-    background: rgba(212, 175, 55, 0.2);
+    background: rgba(245, 138, 119, 0.3);
     border-radius: 50%;
     margin: 0 24px;
 }
@@ -362,7 +358,7 @@
     font-size: 1.5rem;
     font-weight: 300;
     font-style: italic;
-    color: rgba(250, 248, 243, 0.7);
+    color: #6c757d;
     line-height: 1.8;
     margin-bottom: 30px;
 }
@@ -382,6 +378,53 @@
     font-size: 0.75rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(212, 175, 55, 0.4);
+    color: #f58a77;
     font-style: normal;
+}
+
+/* Gallery hover zoom effect */
+.ww-photo-gallery .card {
+    overflow: hidden;
+    position: relative;
+}
+
+.ww-photo-gallery .card img {
+    transition: transform 0.5s ease;
+    display: block;
+    width: 100%;
+}
+
+.ww-photo-gallery .card:hover img {
+    transform: scale(1.1);
+}
+
+/* Expandable gallery */
+.gallery-item {
+    transition: opacity 0.3s ease, max-height 0.5s ease;
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-toggle-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #f58a77;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Noto Serif KR', serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.gallery-toggle-btn:hover {
+    background-color: #e57966;
+    transform: translateY(-2px);
+}
+
+.gallery-toggle-btn:active {
+    transform: translateY(0);
 }

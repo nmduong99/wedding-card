@@ -55,6 +55,29 @@ $(document).ready(function () {
 
 })
 
+// Gallery toggle function
+function toggleGallery() {
+    const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
+    const button = document.getElementById('galleryToggle');
+    
+    if (hiddenItems.length > 0) {
+        // Show all hidden items
+        hiddenItems.forEach(item => {
+            item.classList.remove('hidden');
+        });
+        button.textContent = 'Thu gọn';
+    } else {
+        // Hide items after the first 6
+        const allItems = document.querySelectorAll('.gallery-item');
+        allItems.forEach((item, index) => {
+            if (index >= 6) {
+                item.classList.add('hidden');
+            }
+        });
+        button.textContent = 'Xem thêm';
+    }
+}
+
 // Smooth scroll for links with hashes
 $("a.smooth-scroll").click(function (event) {
     // On-page links
