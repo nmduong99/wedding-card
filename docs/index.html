@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link href="css/custom-lightbox.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
+    <link href="css/journey.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Gugi|Noto+Serif+KR|Stylish|Sunflower:300"
           rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.1.js"></script>
@@ -25,37 +26,7 @@
     <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function sendMail() {
-
-            (function () {
-                emailjs.init("user_yjLL5xG0A3kkOCH5BGIDh");
-                emailjs.send("wedding-mail", "gift_send", {
-                    name: $("#sender-name").value,
-                    gift: $("#gift-name").text(),
-                    message: $("#sender-message").value
-                }).then(function (response) {
-                    console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-                }, function (err) {
-                    console.log("FAILED. error=", err);
-                });
-            })();
-        }
-
-        function findGetParameter(parameterName) {
-            var result = null,
-                tmp = [];
-            location.search
-                .substr(1)
-                .split("&")
-                .forEach(function (item) {
-                  tmp = item.split("=");
-                  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-                });
-            return result;
-        }
-
         $(document).ready(function () {
-
             function getText(){
                 var result = null;
                 $.ajax( { url: "https://raw.githubusercontent.com/AndersonChoi/wedding-card/master/README.md",
@@ -73,11 +44,6 @@
 
             var md = new Remarkable();
             $("#comments").append(md.render(comment_contents));
-
-            
-            if(findGetParameter('gift')=='false'){
-                $('#gifts').hide();
-            }
         });
 
 
@@ -146,6 +112,7 @@
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#couple">Cặp đôi</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#events">Lễ</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#gallery">Ảnh</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#journey">Hành trình</a></li>
                         </ul>
                     </div>
                 </div>
@@ -373,98 +340,130 @@
                 </div>
             </div>
         </div>
-       <div class="ww-section parallax-window  text-white" data-parallax="scroll" data-image-src="images/gift/gift-background.jpg" id="gifts">
-            <div class="ww-gift-section">
-                <div class="container">
-                    <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">Gift for our
-                        wedding</h2>
-                    <div class="col text-center mb-5">
-                        <h6 style="font-family: 'Noto Serif KR', serif;">
-                            저희 부부가 앞으로 살아나갈 일상에<br>
-                            오래도록 특별한 기억을 선물하고 싶으신가요?<br>
-                            그렇다면 고민하는 대신 아래 목록을 참고해 주세요.<br>
-                            저희가 필요로 하는 물건들을 정리해 두었습니다.<br>
-                            애정어린 마음으로 보내주신 선물은<br>
-                            가까이 두어 오래도록 아껴 쓰고,<br>
-                            소중하게 간직하겠습니다.
-                            <br><br>
-                            (아래 선물버튼을 눌러 신랑, 신부에게 예약메시지를 보내세요!)
-                        </h6>
+        <section class="ww-journey-section" id="journey">
+            <div class="container">
+                <!-- Header -->
+                <div class="journey-header">
+                    <div class="journey-decorative-line"></div>
+                    <h2>
+                        <span>OUR</span><br>
+                        <span>JOURNEY</span>
+                    </h2>
+                    <p class="journey-subtitle">A Collection of Moments</p>
+                </div>
+
+                <!-- Timeline -->
+                <div class="journey-timeline">
+                    <!-- Milestone 1: First Meeting -->
+                    <div class="journey-milestone">
+                        <div class="milestone-content">
+                            <div class="milestone-text">
+                                <p class="milestone-date">Năm 2020</p>
+                                <h3 class="milestone-title">Lần Đầu Gặp Mặt</h3>
+                                <p class="milestone-description">
+                                    Cuộc gặp gỡ định mệnh đã đưa hai trái tim đến gần nhau hơn, 
+                                    khởi đầu cho câu chuyện tình yêu đẹp đẽ của chúng tôi.
+                                </p>
+                                <div class="milestone-decorative"></div>
+                            </div>
+                            <div class="milestone-image-container">
+                                <div class="milestone-image-wrapper">
+                                    <img src="images/journey/first-meeting.jpeg" alt="First Meeting" class="milestone-image">
+                                    <div class="milestone-image-overlay"></div>
+                                    <div class="milestone-border-ring"></div>
+                                    <div class="milestone-border-inner"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ww-gift">
-                        <div class="gift-columns">
-                            <div class="gift">
-                                <img alt="와인셀러" class="img-fluid gift-img gift-selected" src="images/gift/wineceller.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('https://smartstore.naver.com/dhk00840/products/4311205513')">
-                                        <i class="fa fa-search"></i></button>
-                                    <button class="btn btn-default gift-btn gift-send" data-name="와인셀러"
-                                            onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
+
+                    <!-- Milestone 2: First Adventure -->
+                    <div class="journey-milestone">
+                        <div class="milestone-content reverse">
+                            <div class="milestone-text">
+                                <p class="milestone-date">Năm 2021</p>
+                                <h3 class="milestone-title">Chuyến Phiêu Lưu Đầu Tiên</h3>
+                                <p class="milestone-description">
+                                    Những chuyến đi đáng nhớ, khám phá thế giới cùng nhau 
+                                    và tạo nên vô số kỷ niệm khó quên.
+                                </p>
+                                <div class="milestone-decorative"></div>
+                            </div>
+                            <div class="milestone-image-container">
+                                <div class="milestone-image-wrapper">
+                                    <img src="images/journey/first-adventure.jpeg" alt="First Adventure" class="milestone-image">
+                                    <div class="milestone-image-overlay"></div>
+                                    <div class="milestone-border-ring"></div>
+                                    <div class="milestone-border-inner"></div>
                                 </div>
                             </div>
-                            <div class="gift">
-                                <img alt="전동클렌저" class="img-fluid gift-img gift-selected"
-                                     src="images/gift/philips_clenser.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('https://www.philips.co.kr/c-p/BSC111_06/visapure-mini-facial-cleanser')">
-                                        <i class="fa fa-search"></i></button>
-                                    <button class="btn btn-default gift-btn gift-send" data-name="전동클렌저"
-                                            onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3: The Proposal -->
+                    <div class="journey-milestone">
+                        <div class="milestone-content">
+                            <div class="milestone-text">
+                                <p class="milestone-date">Tháng 12 năm 2024</p>
+                                <h3 class="milestone-title">Lời Cầu Hôn</h3>
+                                <p class="milestone-description">
+                                    Dưới ánh trăng và những vì sao, anh đã hỏi em câu hỏi quan trọng nhất 
+                                    và em đã nói "Có" với tất cả tình yêu trong trái tim.
+                                </p>
+                                <div class="milestone-decorative"></div>
+                            </div>
+                            <div class="milestone-image-container">
+                                <div class="milestone-image-wrapper">
+                                    <img src="images/journey/proposal.jpeg" alt="The Proposal" class="milestone-image">
+                                    <div class="milestone-image-overlay"></div>
+                                    <div class="milestone-border-ring"></div>
+                                    <div class="milestone-border-inner"></div>
                                 </div>
                             </div>
-                            <div class="gift">
-                                <img alt="드라이기" class="img-fluid gift-img gift-selected" src="images/gift/dyson.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('https://www.kr.dyson.com/products/hair-care/dyson-supersonic-hair-dryer')">
-                                        <i class="fa fa-search"></i></button>
-                                    <button  class="btn btn-default gift-btn gift-send" data-name="드라이기"
-                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
-                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4: Our Wedding -->
+                    <div class="journey-milestone">
+                        <div class="milestone-content reverse">
+                            <div class="milestone-text">
+                                <p class="milestone-date">Tháng 2 năm 2025</p>
+                                <h3 class="milestone-title">Đám Cưới Của Chúng Tôi</h3>
+                                <p class="milestone-description">
+                                    Bắt đầu hành trình mãi mãi cùng nhau, nơi hai trái tim 
+                                    hòa làm một trong tình yêu và hạnh phúc.
+                                </p>
+                                <div class="milestone-decorative"></div>
                             </div>
-                            <div class="gift">
-                                <img alt="믹서기" class="img-fluid gift-img gift-selected" src="images/gift/blender.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('http://jenniferoom.co.kr/product/detail.html?product_no=85&cate_no=24&display_group=1')">
-                                        <i class="fa fa-search"></i></button>
-                                    <button  class="btn btn-default gift-btn gift-send" data-name="믹서기"
-                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
-                                </div>
-                            </div>
-                            <div class="gift">
-                                <img alt="레고" class="img-fluid gift-img gift-selected" src="images/gift/lego.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('https://shop.lego.com/ko-KR/product/10232')"><i
-                                            class="fa fa-search"></i></button>
-                                    <button class="btn btn-default gift-btn gift-send" data-name="레고"
-                                            
-                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
-                                </div>
-                            </div>
-                            <div class="gift">
-                                <img alt="전기레인지" class="img-fluid gift-img gift-selected" src="images/gift/range.png"/>
-                                <div class="btn-group gift-btn-group" role="group">
-                                    <button class="btn btn-default gift-btn"
-                                            onclick="window.open('https://www.lge.co.kr/lgekor/product/kitchen/electricRange/productDetail.do?cateId=4410&prdId=EPRD.333447')">
-                                        <i class="fa fa-search"></i></button>
-                                    <button class="btn btn-default gift-btn gift-send" data-name="전기레인지"
-                                            
-                                             onclick="alert('다른분에게 예약된 선물입니다.');"><i
-                                            class="fa fa-gift"></i></button>
+                            <div class="milestone-image-container">
+                                <div class="milestone-image-wrapper">
+                                    <img src="images/journey/wedding.jpeg" alt="Our Wedding" class="milestone-image">
+                                    <div class="milestone-image-overlay"></div>
+                                    <div class="milestone-border-ring"></div>
+                                    <div class="milestone-border-inner"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Footer Quote -->
+                <div class="journey-footer">
+                    <div class="footer-decorative">
+                        <div class="footer-line"></div>
+                        <div class="footer-dot"></div>
+                        <div class="footer-line right"></div>
+                    </div>
+                    <blockquote class="journey-quote">
+                        "Trong tất cả thế gian này, không có trái tim nào dành cho em như trái tim của anh.
+                        <span style="display: block; margin-top: 0.5rem;">
+                        Trong tất cả thế gian này, không có tình yêu nào dành cho anh như tình yêu của em."
+                        </span>
+                    </blockquote>
+                    <cite class="journey-quote-author">— Maya Angelou</cite>
+                </div>
+            </div>
+        </section>
             </div>
         </div>
         <div class="ww-section ww-rsvp-detail" id="map">
@@ -528,34 +527,7 @@
     </div>
 </div>
 </div>
-<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="giftMailModal" role="dialog"
-     tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">선물하기 - <span id="gift-name"></span></h5>
-                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">보내는 분 성함</span>
-                    </div>
-                    <input aria-describedby="basic-addon3" class="form-control" id="sender-name" type="text">
-                </div>
-                <div class="input-group">
-                    <textarea aria-label="With textarea" class="form-control" id="sender-message"
-                              placeholder="신랑, 신부에게 선물 예약과 함께 보낼 메시지를 입력해주세요. 이 메시지는 신랑, 신부에게 발송됩니다." rows=4></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="reserveGiftButton" type="button">예약</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 <footer></footer>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
