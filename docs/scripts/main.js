@@ -13,6 +13,45 @@ $(document).ready(function () {
         return false;
     });
 
+    // Countdown Timer Configuration
+    const WEDDING_DATE = new Date('2025-02-25T14:00:00').getTime();
+    
+    // Cache DOM elements for countdown
+    const $countdownDays = $('#countdown-days');
+    const $countdownHours = $('#countdown-hours');
+    const $countdownMinutes = $('#countdown-minutes');
+    const $countdownSeconds = $('#countdown-seconds');
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = WEDDING_DATE - now;
+
+        if (distance < 0) {
+            // Wedding has passed
+            $countdownDays.text('00');
+            $countdownHours.text('00');
+            $countdownMinutes.text('00');
+            $countdownSeconds.text('00');
+            return;
+        }
+
+        // Calculate time units
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update display with leading zeros
+        $countdownDays.text(String(days).padStart(2, '0'));
+        $countdownHours.text(String(hours).padStart(2, '0'));
+        $countdownMinutes.text(String(minutes).padStart(2, '0'));
+        $countdownSeconds.text(String(seconds).padStart(2, '0'));
+    }
+
+    // Update countdown immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     $(".gift-send").click(function () {
         $("#gift-name").text($(this).data("name"));
     })
