@@ -13,6 +13,39 @@ $(document).ready(function () {
         return false;
     });
 
+    // Countdown Timer
+    function updateCountdown() {
+        // Wedding date: February 25, 2025 at 2:00 PM
+        const weddingDate = new Date('2025-02-25T14:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance < 0) {
+            // Wedding has passed
+            $('#countdown-days').text('00');
+            $('#countdown-hours').text('00');
+            $('#countdown-minutes').text('00');
+            $('#countdown-seconds').text('00');
+            return;
+        }
+
+        // Calculate time units
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update display with leading zeros
+        $('#countdown-days').text(String(days).padStart(2, '0'));
+        $('#countdown-hours').text(String(hours).padStart(2, '0'));
+        $('#countdown-minutes').text(String(minutes).padStart(2, '0'));
+        $('#countdown-seconds').text(String(seconds).padStart(2, '0'));
+    }
+
+    // Update countdown immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     $(".gift-send").click(function () {
         $("#gift-name").text($(this).data("name"));
     })

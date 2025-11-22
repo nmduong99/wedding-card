@@ -9756,11 +9756,9 @@ body {
 
 /* Home Page Style */
 .ww-home-page {
-    position: relative; /* Necessary for padding-top to work correctly */
-    padding-top:66.67%; /* 100% / 1.7778 (image aspect ratio) */ 
+    position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.jpg") no-repeat center center;
     background-size: cover;
-    /* background-position: 50%; */
     height: 100vh;
     min-height: 480px;
 }
@@ -9769,7 +9767,7 @@ body {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    height: 140%;
+    height: 100%;
     text-align: center;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
@@ -10060,6 +10058,92 @@ body {
     color: #fff;
 }
 
+/* Countdown Timer Style */
+.countdown-container {
+    margin-top: 2rem;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.countdown-value {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFC0CB;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-family: 'Gugi', cursive;
+    font-size: 0.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+}
+
+.countdown-separator {
+    font-size: 2rem;
+    color: #FFC0CB;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .countdown-value {
+        font-size: 1.8rem;
+    }
+    
+    .countdown-separator {
+        font-size: 1.5rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.6rem;
+    }
+    
+    .countdown-item {
+        min-width: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-display {
+        gap: 0.25rem;
+    }
+    
+    .countdown-value {
+        font-size: 1.3rem;
+    }
+    
+    .countdown-separator {
+        font-size: 1.2rem;
+        padding: 0 0.1rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.5rem;
+    }
+    
+    .countdown-item {
+        min-width: 35px;
+    }
+}
 
 .bottom_right {
     overflow: hidden;
