@@ -9883,6 +9883,121 @@ body {
     padding-left: 0;
 }
 
+/* Event Card Styles */
+.event-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(245, 138, 119, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(245, 138, 119, 0.3);
+}
+
+.event-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f58a77;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(245, 138, 119, 0.3);
+}
+
+.event-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.event-card-item i {
+    font-size: 1.1rem;
+    color: #f58a77 !important;
+}
+
+.event-card-address {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.event-card-address strong {
+    color: #333;
+    font-size: 1.05rem;
+}
+
+.event-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(245, 138, 119, 0.85);
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(245, 138, 119, 0.3);
+    margin-top: auto;
+}
+
+.event-card-btn:hover {
+    background: rgba(245, 138, 119, 1);
+    box-shadow: 0 4px 15px rgba(245, 138, 119, 0.5);
+    transform: scale(1.05);
+    text-decoration: none;
+    color: white !important;
+}
+
+.event-card-btn i {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        padding: 1.5rem;
+    }
+    
+    .event-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .event-card-item {
+        font-size: 0.9rem;
+    }
+    
+    .event-card-address {
+        font-size: 0.85rem;
+    }
+    
+    .event-card-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
 /* Couple Friends Style  */
 .ww-couple-friends .carousel {
     padding: 40px 0;
