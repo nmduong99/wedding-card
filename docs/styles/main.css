@@ -9929,7 +9929,7 @@ body {
 
 .event-card-item i {
     font-size: 1.1rem;
-    color: #f58a77 !important;
+    color: #f58a77;
 }
 
 .event-card-address {
@@ -9952,7 +9952,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     background: rgba(245, 138, 119, 0.85);
-    color: white !important;
+    color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     text-decoration: none;
@@ -9963,12 +9963,14 @@ body {
     margin-top: auto;
 }
 
-.event-card-btn:hover {
+.event-card-btn:hover,
+.event-card-btn:focus,
+.event-card-btn:active {
     background: rgba(245, 138, 119, 1);
     box-shadow: 0 4px 15px rgba(245, 138, 119, 0.5);
     transform: scale(1.05);
     text-decoration: none;
-    color: white !important;
+    color: white;
 }
 
 .event-card-btn i {
