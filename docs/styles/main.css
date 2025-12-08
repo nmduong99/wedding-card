@@ -10031,178 +10031,246 @@ body {
     min-height: 500px;
 }
 
-/* Asymmetrical Peek Gallery - Modern Design */
-.asymmetric-gallery {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4px;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.gallery-large {
-    position: relative;
-    overflow: hidden;
-    height: 500px;
-}
-
-.gallery-large a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.gallery-large img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.gallery-large:hover img {
-    transform: scale(1.02);
-}
-
-.gallery-hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+/* Scrapbook Stack Gallery - Playful & Romantic Design */
+.scrapbook-gallery {
     display: flex;
-    align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 500px;
 }
 
-.gallery-large:hover .gallery-hover-overlay {
-    opacity: 1;
+.scrapbook-stack {
+    position: relative;
+    width: 350px;
+    height: 420px;
 }
 
-.gallery-hover-overlay span {
-    color: white;
-    font-family: 'Noto Serif KR', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 12px 24px;
-    border: 2px solid white;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+/* Base styles for all Polaroid photos */
+.scrapbook-photo {
+    position: absolute;
+    background: white;
+    padding: 15px 15px 50px 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
 }
 
-.gallery-small-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    height: 500px;
-}
-
-.gallery-small-item {
-    flex: 1;
-    overflow: hidden;
-}
-
-.gallery-small-item a {
+.scrapbook-photo a {
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.gallery-small-item img {
+.scrapbook-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    display: block;
 }
 
-.gallery-small-item:hover img {
-    transform: scale(1.05);
+/* Back left photo - rotated -5 degrees, tucked behind */
+.scrapbook-back-left {
+    width: 280px;
+    height: 340px;
+    transform: rotate(-8deg);
+    left: -20px;
+    top: 30px;
+    z-index: 1;
 }
 
-/* Explore Gallery Button */
+.scrapbook-back-left img {
+    width: 250px;
+    height: 260px;
+}
+
+/* Back right photo - rotated +5 degrees, tucked behind */
+.scrapbook-back-right {
+    width: 280px;
+    height: 340px;
+    transform: rotate(8deg);
+    right: -20px;
+    top: 30px;
+    z-index: 1;
+}
+
+.scrapbook-back-right img {
+    width: 250px;
+    height: 260px;
+}
+
+/* Center photo - largest, front */
+.scrapbook-center {
+    width: 320px;
+    height: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 2;
+}
+
+.scrapbook-center img {
+    width: 290px;
+    height: 320px;
+}
+
+/* Hover animation - "dealing cards" effect */
+.scrapbook-stack:hover .scrapbook-back-left {
+    transform: rotate(-12deg) translateX(-80px) translateY(-20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.scrapbook-stack:hover .scrapbook-back-right {
+    transform: rotate(12deg) translateX(80px) translateY(-20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.scrapbook-stack:hover .scrapbook-center {
+    transform: translateX(-50%) translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual photo hover effects */
+.scrapbook-photo:hover {
+    z-index: 10;
+}
+
+/* Explore Gallery Button - Pill shaped, filled */
 .gallery-explore-btn-container {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 40px;
 }
 
 .gallery-explore-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    background: transparent;
-    color: #333;
+    background: #f58a77;
+    color: white;
     font-family: 'Noto Serif KR', serif;
     font-size: 1rem;
     font-weight: 500;
-    padding: 12px 24px;
-    border: 2px solid #f58a77;
-    border-radius: 4px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(245, 138, 119, 0.4);
 }
 
 .gallery-explore-btn:hover {
-    background: #f58a77;
+    background: #e67a67;
     color: white;
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 138, 119, 0.5);
 }
 
-.gallery-explore-btn .arrow {
-    transition: transform 0.3s ease;
-}
-
-.gallery-explore-btn:hover .arrow {
-    transform: translateX(4px);
-}
-
-/* Responsive for Asymmetric Gallery */
+/* Responsive for Scrapbook Gallery */
 @media (max-width: 768px) {
-    .asymmetric-gallery {
-        grid-template-columns: 1fr;
-        gap: 4px;
+    .scrapbook-gallery {
+        padding: 40px 10px;
+        min-height: 400px;
     }
     
-    .gallery-large {
-        height: 300px;
+    .scrapbook-stack {
+        width: 280px;
+        height: 350px;
     }
     
-    .gallery-small-stack {
-        flex-direction: row;
-        height: 150px;
+    .scrapbook-back-left,
+    .scrapbook-back-right {
+        width: 220px;
+        height: 280px;
     }
     
-    .gallery-hover-overlay span {
-        font-size: 1rem;
-        padding: 10px 16px;
+    .scrapbook-back-left img,
+    .scrapbook-back-right img {
+        width: 190px;
+        height: 200px;
     }
     
-    .gallery-explore-btn-container {
-        justify-content: center;
+    .scrapbook-center {
+        width: 260px;
+        height: 330px;
+    }
+    
+    .scrapbook-center img {
+        width: 230px;
+        height: 250px;
+    }
+    
+    .scrapbook-photo {
+        padding: 10px 10px 35px 10px;
+    }
+    
+    .scrapbook-stack:hover .scrapbook-back-left {
+        transform: rotate(-10deg) translateX(-50px) translateY(-15px);
+    }
+    
+    .scrapbook-stack:hover .scrapbook-back-right {
+        transform: rotate(10deg) translateX(50px) translateY(-15px);
     }
 }
 
 @media (max-width: 576px) {
-    .gallery-large {
-        height: 250px;
+    .scrapbook-gallery {
+        padding: 30px 5px;
+        min-height: 320px;
     }
     
-    .gallery-small-stack {
-        height: 120px;
+    .scrapbook-stack {
+        width: 220px;
+        height: 280px;
     }
     
-    .gallery-hover-overlay span {
-        font-size: 0.9rem;
-        padding: 8px 12px;
+    .scrapbook-back-left,
+    .scrapbook-back-right {
+        width: 170px;
+        height: 220px;
+    }
+    
+    .scrapbook-back-left img,
+    .scrapbook-back-right img {
+        width: 150px;
+        height: 160px;
+    }
+    
+    .scrapbook-back-left {
+        left: -10px;
+    }
+    
+    .scrapbook-back-right {
+        right: -10px;
+    }
+    
+    .scrapbook-center {
+        width: 200px;
+        height: 260px;
+    }
+    
+    .scrapbook-center img {
+        width: 180px;
+        height: 200px;
+    }
+    
+    .scrapbook-photo {
+        padding: 8px 8px 28px 8px;
     }
     
     .gallery-explore-btn {
         font-size: 0.9rem;
-        padding: 10px 20px;
+        padding: 12px 24px;
+    }
+    
+    .scrapbook-stack:hover .scrapbook-back-left {
+        transform: rotate(-8deg) translateX(-30px) translateY(-10px);
+    }
+    
+    .scrapbook-stack:hover .scrapbook-back-right {
+        transform: rotate(8deg) translateX(30px) translateY(-10px);
     }
 }
 

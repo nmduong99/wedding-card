@@ -206,28 +206,27 @@
                 <div class="container">
                     <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Noto Serif KR', serif;">Ảnh</h2>
                     
-                    <!-- Asymmetrical Peek Gallery -->
-                    <div class="asymmetric-gallery">
-                        <!-- Large image on the left (2/3 width) -->
-                        <div class="gallery-large">
-                            <a href="images/DC/NVD00377.jpg" data-gallery="ww-gallery">
-                                <img alt="Gallery Main" class="img-fluid" src="images/DC/NVD00377.jpg" />
-                                <div class="gallery-hover-overlay">
-                                    <span>See all 50+ photos</span>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Two stacked images on the right (1/3 width) -->
-                        <div class="gallery-small-stack">
-                            <div class="gallery-small-item">
+                    <!-- Scrapbook Stack Gallery -->
+                    <div class="scrapbook-gallery">
+                        <div class="scrapbook-stack">
+                            <!-- Back left image (rotated -5deg) -->
+                            <div class="scrapbook-photo scrapbook-back-left">
                                 <a href="images/DC/NVD00473.jpg" data-gallery="ww-gallery">
-                                    <img alt="Gallery Pic 2" class="img-fluid" src="images/DC/NVD00473.jpg" />
+                                    <img alt="Gallery Pic 2" src="images/DC/NVD00473.jpg" />
                                 </a>
                             </div>
-                            <div class="gallery-small-item">
+                            
+                            <!-- Back right image (rotated +5deg) -->
+                            <div class="scrapbook-photo scrapbook-back-right">
                                 <a href="images/DC/NVD00589.jpg" data-gallery="ww-gallery">
-                                    <img alt="Gallery Pic 3" class="img-fluid" src="images/DC/NVD00589.jpg" />
+                                    <img alt="Gallery Pic 3" src="images/DC/NVD00589.jpg" />
+                                </a>
+                            </div>
+                            
+                            <!-- Center image (largest, front) -->
+                            <div class="scrapbook-photo scrapbook-center">
+                                <a href="images/DC/NVD00377.jpg" data-gallery="ww-gallery">
+                                    <img alt="Gallery Main" src="images/DC/NVD00377.jpg" />
                                 </a>
                             </div>
                         </div>
@@ -260,7 +259,7 @@
                     <!-- Explore Gallery Button -->
                     <div class="gallery-explore-btn-container">
                         <a href="images/DC/NVD00377.jpg" data-gallery="ww-gallery" class="gallery-explore-btn">
-                            Explore Gallery <span class="arrow">→</span>
+                            Explore Gallery
                         </a>
                     </div>
                 </div>
