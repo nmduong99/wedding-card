@@ -10446,11 +10446,30 @@ body {
 
 /* Sticky navbar for desktop */
 .ww-nav-bar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1030;
     background-color: #f8f9fa;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add scroll margin to sections to account for fixed navbar */
+.ww-section {
+    scroll-margin-top: 69px;
+}
+
+/* On mobile, keep position sticky to preserve current behavior */
+@media (max-width: 991px) {
+    .ww-nav-bar {
+        position: sticky;
+        top: 0;
+    }
+    
+    .ww-section {
+        scroll-margin-top: 0;
+    }
 }
 
 .btn-primary {
