@@ -10031,6 +10031,181 @@ body {
     min-height: 500px;
 }
 
+/* Asymmetrical Peek Gallery - Modern Design */
+.asymmetric-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.gallery-large {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+}
+
+.gallery-large a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-large:hover img {
+    transform: scale(1.02);
+}
+
+.gallery-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-large:hover .gallery-hover-overlay {
+    opacity: 1;
+}
+
+.gallery-hover-overlay span {
+    color: white;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.gallery-small-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 500px;
+}
+
+.gallery-small-item {
+    flex: 1;
+    overflow: hidden;
+}
+
+.gallery-small-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-small-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-small-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Explore Gallery Button */
+.gallery-explore-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.gallery-explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #333;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border: 2px solid #f58a77;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.gallery-explore-btn:hover {
+    background: #f58a77;
+    color: white;
+    text-decoration: none;
+}
+
+.gallery-explore-btn .arrow {
+    transition: transform 0.3s ease;
+}
+
+.gallery-explore-btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Responsive for Asymmetric Gallery */
+@media (max-width: 768px) {
+    .asymmetric-gallery {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+    
+    .gallery-large {
+        height: 300px;
+    }
+    
+    .gallery-small-stack {
+        flex-direction: row;
+        height: 150px;
+    }
+    
+    .gallery-hover-overlay span {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+    
+    .gallery-explore-btn-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-large {
+        height: 250px;
+    }
+    
+    .gallery-small-stack {
+        height: 120px;
+    }
+    
+    .gallery-hover-overlay span {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    .gallery-explore-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
 .ww-gift-section .ww-gift {
     min-height: 100px;
 }
