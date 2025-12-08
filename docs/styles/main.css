@@ -10427,6 +10427,32 @@ body {
     padding: 100px 0;
 }
 
+/* Full viewport height sections on desktop (except conclusion) */
+@media (min-width: 992px) {
+    .ww-section:not(.conclusion-section) {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 0;
+        box-sizing: border-box;
+    }
+    
+    .ww-section:not(.conclusion-section) > .container,
+    .ww-section:not(.conclusion-section) > .ww-photo-gallery {
+        width: 100%;
+    }
+}
+
+/* Sticky navbar for desktop */
+.ww-nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .btn-primary {
     color: #fff;
 }
