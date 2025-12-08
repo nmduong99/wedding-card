@@ -91,3 +91,21 @@ $("a.smooth-scroll").click(function (event) {
         }
     }
 });
+
+// Toggle QR code display for gift section
+function toggleQR(person) {
+    var frontId = person + '-front';
+    var backId = person + '-back';
+    var front = document.getElementById(frontId);
+    var back = document.getElementById(backId);
+    
+    if (front && back) {
+        if (front.style.display === 'none') {
+            front.style.display = 'block';
+            back.style.display = 'none';
+        } else {
+            front.style.display = 'none';
+            back.style.display = 'block';
+        }
+    }
+}
