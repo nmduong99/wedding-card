@@ -52,6 +52,48 @@ $(document).ready(function () {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    // ===== Mobile Menu Auto-Close Functionality =====
+    var $navbarToggler = $('.navbar-toggler');
+    var $navbarCollapse = $('#ww-navbarNav');
+    
+    // Function to close mobile menu
+    function closeMobileMenu() {
+        if ($navbarCollapse.hasClass('show')) {
+            $navbarCollapse.collapse('hide');
+            $navbarToggler.attr('aria-expanded', 'false');
+        }
+    }
+    
+    // Close menu when clicking a nav link
+    $navbarCollapse.on('click', 'a.nav-link', function() {
+        closeMobileMenu();
+    });
+    
+    // Close menu on outside click
+    $(document).on('click', function(event) {
+        var $target = $(event.target);
+        // If menu is open and click is outside navbar
+        if ($navbarCollapse.hasClass('show') && 
+            !$target.closest('.navbar').length) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Close menu on Escape key
+    $(document).on('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            if ($navbarCollapse.hasClass('show')) {
+                closeMobileMenu();
+                $navbarToggler.focus(); // Restore focus to toggle button
+            }
+        }
+    });
+    
+    // Update aria-expanded on toggle
+    $navbarToggler.on('click', function() {
+        var isExpanded = $(this).attr('aria-expanded') === 'true';
+        $(this).attr('aria-expanded', !isExpanded);
+    });
 
 })
 

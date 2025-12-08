@@ -49,6 +49,7 @@ html {
     -ms-text-size-adjust: 100%;
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 @-ms-viewport {
@@ -68,6 +69,7 @@ body {
     color: #212529;
     text-align: left;
     background-color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 
@@ -10038,11 +10040,13 @@ body {
     align-items: center;
     padding: 60px 20px;
     min-height: 550px;
+    overflow: hidden; /* Prevent horizontal overflow from rotated images */
 }
 
 .scrapbook-stack {
     position: relative;
     width: 450px;
+    max-width: 100%;
     height: 450px;
 }
 
