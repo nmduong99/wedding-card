@@ -10037,13 +10037,13 @@ body {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    min-height: 500px;
+    min-height: 550px;
 }
 
 .scrapbook-stack {
     position: relative;
-    width: 350px;
-    height: 420px;
+    width: 450px;
+    height: 450px;
 }
 
 /* Base styles for all Polaroid photos */
@@ -10069,13 +10069,13 @@ body {
     display: block;
 }
 
-/* Back left photo - rotated -5 degrees, tucked behind */
+/* Back left photo - rotated and spread out to reveal more */
 .scrapbook-back-left {
     width: 280px;
     height: 340px;
-    transform: rotate(-8deg);
-    left: -20px;
-    top: 30px;
+    transform: rotate(-15deg);
+    left: -60px;
+    top: 20px;
     z-index: 1;
 }
 
@@ -10084,13 +10084,13 @@ body {
     height: 260px;
 }
 
-/* Back right photo - rotated +5 degrees, tucked behind */
+/* Back right photo - rotated and spread out to reveal more */
 .scrapbook-back-right {
     width: 280px;
     height: 340px;
-    transform: rotate(8deg);
-    right: -20px;
-    top: 30px;
+    transform: rotate(15deg);
+    right: -60px;
+    top: 20px;
     z-index: 1;
 }
 
@@ -10116,12 +10116,12 @@ body {
 
 /* Hover animation - "dealing cards" effect */
 .scrapbook-stack:hover .scrapbook-back-left {
-    transform: rotate(-12deg) translateX(-80px) translateY(-20px);
+    transform: rotate(-20deg) translateX(-100px) translateY(-30px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
 .scrapbook-stack:hover .scrapbook-back-right {
-    transform: rotate(12deg) translateX(80px) translateY(-20px);
+    transform: rotate(20deg) translateX(100px) translateY(-30px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -10176,7 +10176,7 @@ body {
     }
     
     .scrapbook-stack {
-        width: 280px;
+        width: 320px;
         height: 350px;
     }
     
@@ -10190,6 +10190,16 @@ body {
     .scrapbook-back-right img {
         width: 190px;
         height: 200px;
+    }
+    
+    .scrapbook-back-left {
+        left: -40px;
+        transform: rotate(-12deg);
+    }
+    
+    .scrapbook-back-right {
+        right: -40px;
+        transform: rotate(12deg);
     }
     
     .scrapbook-center {
@@ -10207,11 +10217,11 @@ body {
     }
     
     .scrapbook-stack:hover .scrapbook-back-left {
-        transform: rotate(-10deg) translateX(-50px) translateY(-15px);
+        transform: rotate(-18deg) translateX(-60px) translateY(-20px);
     }
     
     .scrapbook-stack:hover .scrapbook-back-right {
-        transform: rotate(10deg) translateX(50px) translateY(-15px);
+        transform: rotate(18deg) translateX(60px) translateY(-20px);
     }
 }
 
@@ -10222,7 +10232,7 @@ body {
     }
     
     .scrapbook-stack {
-        width: 220px;
+        width: 260px;
         height: 280px;
     }
     
@@ -10239,11 +10249,13 @@ body {
     }
     
     .scrapbook-back-left {
-        left: -10px;
+        left: -30px;
+        transform: rotate(-12deg);
     }
     
     .scrapbook-back-right {
-        right: -10px;
+        right: -30px;
+        transform: rotate(12deg);
     }
     
     .scrapbook-center {
@@ -10266,11 +10278,11 @@ body {
     }
     
     .scrapbook-stack:hover .scrapbook-back-left {
-        transform: rotate(-8deg) translateX(-30px) translateY(-10px);
+        transform: rotate(-15deg) translateX(-40px) translateY(-15px);
     }
     
     .scrapbook-stack:hover .scrapbook-back-right {
-        transform: rotate(8deg) translateX(30px) translateY(-10px);
+        transform: rotate(15deg) translateX(40px) translateY(-15px);
     }
 }
 
