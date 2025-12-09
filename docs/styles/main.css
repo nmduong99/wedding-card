@@ -10444,13 +10444,18 @@ body {
     }
 }
 
-/* Sticky navbar for desktop */
+/* Sticky navbar for all viewports */
 .ww-nav-bar {
     position: sticky;
     top: 0;
     z-index: 1030;
     background-color: #f8f9fa;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add scroll margin to sections to account for sticky navbar */
+.ww-section {
+    scroll-margin-top: 69px;
 }
 
 .btn-primary {
