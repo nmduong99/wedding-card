@@ -52,31 +52,50 @@ $(document).ready(function () {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    // ===== Mobile Menu Auto-Close Functionality =====
+    var $navbarToggler = $('.navbar-toggler');
+    var $navbarCollapse = $('#ww-navbarNav');
+    
+    // Function to close mobile menu
+    function closeMobileMenu() {
+        if ($navbarCollapse.hasClass('show')) {
+            $navbarCollapse.collapse('hide');
+            $navbarToggler.attr('aria-expanded', 'false');
+        }
+    }
+    
+    // Close menu when clicking a nav link
+    $navbarCollapse.on('click', 'a.nav-link', function() {
+        closeMobileMenu();
+    });
+    
+    // Close menu on outside click
+    $(document).on('click', function(event) {
+        var $target = $(event.target);
+        // If menu is open and click is outside navbar
+        if ($navbarCollapse.hasClass('show') && 
+            !$target.closest('.navbar').length) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Close menu on Escape key
+    $(document).on('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            if ($navbarCollapse.hasClass('show')) {
+                closeMobileMenu();
+                $navbarToggler.focus(); // Restore focus to toggle button
+            }
+        }
+    });
+    
+    // Update aria-expanded on toggle
+    $navbarToggler.on('click', function() {
+        var isExpanded = $(this).attr('aria-expanded') === 'true';
+        $(this).attr('aria-expanded', !isExpanded);
+    });
 
 })
-
-// Gallery toggle function
-function toggleGallery() {
-    const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
-    const button = document.getElementById('galleryToggle');
-    
-    if (hiddenItems.length > 0) {
-        // Show all hidden items
-        hiddenItems.forEach(item => {
-            item.classList.remove('hidden');
-        });
-        button.textContent = 'Thu gọn';
-    } else {
-        // Hide items after the first 6
-        const allItems = document.querySelectorAll('.gallery-item');
-        allItems.forEach((item, index) => {
-            if (index >= 6) {
-                item.classList.add('hidden');
-            }
-        });
-        button.textContent = 'Xem thêm';
-    }
-}
 
 // Smooth scroll for links with hashes
 $("a.smooth-scroll").click(function (event) {
@@ -114,3 +133,21 @@ $("a.smooth-scroll").click(function (event) {
         }
     }
 });
+
+// Toggle QR code display for gift section
+function toggleQR(person) {
+    var frontId = person + '-front';
+    var backId = person + '-back';
+    var front = document.getElementById(frontId);
+    var back = document.getElementById(backId);
+    
+    if (front && back) {
+        if (front.style.display === 'none') {
+            front.style.display = 'block';
+            back.style.display = 'none';
+        } else {
+            front.style.display = 'none';
+            back.style.display = 'block';
+        }
+    }
+}
