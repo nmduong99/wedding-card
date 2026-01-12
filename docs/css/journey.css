@@ -428,3 +428,8 @@
 .gallery-toggle-btn:active {
     transform: translateY(0);
 }
+
+/* Fix object position for better face visibility */
+.milestone-image {
+    object-position: top center;
+}

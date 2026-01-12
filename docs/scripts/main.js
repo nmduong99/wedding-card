@@ -9,13 +9,13 @@ $(document).ready(function () {
     }
 
     $('#go-to-top').click(function () {
-        $('html,body').animate({scrollTop: 0}, 400);
+        $('html,body').animate({ scrollTop: 0 }, 400);
         return false;
     });
 
     // Countdown Timer Configuration
     const WEDDING_DATE = new Date('2025-02-01T14:00:00').getTime();
-    
+
     // Cache DOM elements for countdown
     const $countdownDays = $('#countdown-days');
     const $countdownHours = $('#countdown-hours');
@@ -55,7 +55,7 @@ $(document).ready(function () {
     // ===== Mobile Menu Auto-Close Functionality =====
     var $navbarToggler = $('.navbar-toggler');
     var $navbarCollapse = $('#ww-navbarNav');
-    
+
     // Function to close mobile menu
     function closeMobileMenu() {
         if ($navbarCollapse.hasClass('show')) {
@@ -63,24 +63,24 @@ $(document).ready(function () {
             $navbarToggler.attr('aria-expanded', 'false');
         }
     }
-    
+
     // Close menu when clicking a nav link
-    $navbarCollapse.on('click', 'a.nav-link', function() {
+    $navbarCollapse.on('click', 'a.nav-link', function () {
         closeMobileMenu();
     });
-    
+
     // Close menu on outside click
-    $(document).on('click', function(event) {
+    $(document).on('click', function (event) {
         var $target = $(event.target);
         // If menu is open and click is outside navbar
-        if ($navbarCollapse.hasClass('show') && 
+        if ($navbarCollapse.hasClass('show') &&
             !$target.closest('.navbar').length) {
             closeMobileMenu();
         }
     });
-    
+
     // Close menu on Escape key
-    $(document).on('keydown', function(event) {
+    $(document).on('keydown', function (event) {
         if (event.key === 'Escape' || event.keyCode === 27) {
             if ($navbarCollapse.hasClass('show')) {
                 closeMobileMenu();
@@ -88,9 +88,9 @@ $(document).ready(function () {
             }
         }
     });
-    
+
     // Update aria-expanded on toggle
-    $navbarToggler.on('click', function() {
+    $navbarToggler.on('click', function () {
         var isExpanded = $(this).attr('aria-expanded') === 'true';
         $(this).attr('aria-expanded', !isExpanded);
     });
@@ -140,7 +140,7 @@ function toggleQR(person) {
     var backId = person + '-back';
     var front = document.getElementById(frontId);
     var back = document.getElementById(backId);
-    
+
     if (front && back) {
         if (front.style.display === 'none') {
             front.style.display = 'block';
@@ -151,3 +151,130 @@ function toggleQR(person) {
         }
     }
 }
+
+// Custom Gallery Toggle
+function toggleGallery() {
+    var collage = document.getElementById('collage-view');
+    var grid = document.getElementById('full-gallery-grid');
+    var btn = document.getElementById('explore-btn');
+
+    if (collage.style.display !== 'none') {
+        collage.style.display = 'none';
+        grid.classList.add('show-grid');
+        btn.textContent = 'Thu g?n';
+    } else {
+        collage.style.display = 'block';
+        grid.classList.remove('show-grid');
+        btn.textContent = 'Xem t?t c? ?nh';
+    }
+}
+
+/* Carousel Logic */
+$(window).on('load', function () {
+    const viewport = document.querySelector('.gallery-carousel-viewport');
+    if (!viewport) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let autoScrollSpeed = 0.5; // Adjust speed here
+    let animationId;
+    let isHovering = false;
+
+    // infinite scroll logic
+    function step() {
+        if (!isDown && !isHovering) {
+            viewport.scrollLeft += autoScrollSpeed;
+            // Reset if reached half (assuming 2 duplicate sets)
+            if (viewport.scrollLeft >= (viewport.scrollWidth / 2)) {
+                viewport.scrollLeft = 0;
+            }
+        }
+        animationId = requestAnimationFrame(step);
+    }
+    // Start auto scroll
+    animationId = requestAnimationFrame(step);
+
+    // Mouse Events
+    viewport.addEventListener('mousedown', (e) => {
+        isDown = true;
+        viewport.classList.add('active');
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+        // cancelAnimationFrame(animationId); // Optional: stop auto loop while dragging, but we usually handle in Step via flag
+    });
+    viewport.addEventListener('mouseleave', () => {
+        isDown = false;
+        isHovering = false;
+        viewport.classList.remove('active');
+    });
+    viewport.addEventListener('mouseup', () => {
+        isDown = false;
+        viewport.classList.remove('active');
+    });
+    viewport.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll-fast multiplier
+        viewport.scrollLeft = scrollLeft - walk;
+    });
+    // Touch Events for Mobile
+    viewport.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+    });
+    viewport.addEventListener('touchend', () => {
+        isDown = false;
+    });
+    viewport.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 2;
+        viewport.scrollLeft = scrollLeft - walk;
+    });
+    // Hover pause
+    viewport.addEventListener('mouseenter', () => {
+        isHovering = true;
+    });
+});
+
+/* Music Player Logic */
+$(document).ready(function () {
+    var audio = document.getElementById('player');
+    var controlBtn = $('#music-control');
+    var isPlaying = false;
+
+    if (audio) {
+        // Set volume to 0.5
+        audio.volume = 0.5;
+
+        // Toggle Play/Pause on click
+        controlBtn.on('click', function () {
+            if (audio.paused) {
+                audio.play();
+                isPlaying = true;
+                $(this).addClass('fa-spin'); // Spin icon when playing
+            } else {
+                audio.pause();
+                isPlaying = false;
+                $(this).removeClass('fa-spin');
+            }
+        });
+
+        // Auto-play after 5 seconds
+        setTimeout(function () {
+            // Note: Modern browsers might block this if no user interaction occurred
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function () {
+                    isPlaying = true;
+                    controlBtn.addClass('fa-spin');
+                }).catch(function (error) {
+                    console.log('Auto-play was prevented by browser policy. Interaction required.');
+                });
+            }
+        }, 5000);
+    }
+});
