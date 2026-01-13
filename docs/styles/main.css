@@ -11040,10 +11040,15 @@ body {
 
 .qr-person-image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+#groom-front .qr-person-image {
+    object-position: center 20%;
 }
 
 .qr-person-name {
@@ -11155,13 +11160,9 @@ body {
         font-size: 1.5rem;
     }
 
-    .gift-couple-image {
-        height: 350px;
-    }
 
-    .qr-person-image {
-        height: 150px;
-    }
+
+
 
     .qr-placeholder,
     .qr-code-img {
@@ -11183,13 +11184,9 @@ body {
         font-size: 2rem;
     }
 
-    .gift-couple-image {
-        height: 280px;
-    }
 
-    .qr-person-image {
-        height: 120px;
-    }
+
+
 
     .qr-placeholder,
     .qr-code-img {
@@ -11643,4 +11640,14 @@ body {
     object-position: top center;
     object-fit: cover;
     /* Ensure cover is active */
+}
+
+/* Override for Gift Box to show couple at bottom */
+.gift-box-image img {
+    object-position: center 25%;
+}
+
+/* Refine Groom QR position */
+#groom-front .qr-person-image {
+    object-position: center 0%;
 }
