@@ -260,6 +260,7 @@ $(document).ready(function () {
     if (audio) {
         // Set volume to 0.1
         audio.volume = 0.1;
+        audio.loop = true;
 
         // Toggle Play/Pause on click
         controlBtn.on('click', function () {
@@ -274,19 +275,28 @@ $(document).ready(function () {
             }
         });
 
-        // Auto-play after 5 seconds
-        setTimeout(function () {
-            // Note: Modern browsers might block this if no user interaction occurred
-            var playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.then(function () {
-                    isPlaying = true;
-                    controlBtn.addClass('fa-spin');
-                }).catch(function (error) {
-                    console.log('Auto-play was prevented by browser policy. Interaction required.');
-                });
-            }
-        }, 5000);
+        // Auto-play when loaded (with 1s delay)
+        var attemptPlay = function () {
+            setTimeout(function () {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function () {
+                        isPlaying = true;
+                        controlBtn.addClass('fa-spin');
+                    }).catch(function (error) {
+                        console.log('Auto-play prevented. User interaction needed.');
+                    });
+                }
+            }, 1000);
+        };
+
+        if (audio.readyState > 3) {
+            attemptPlay();
+        } else {
+            audio.addEventListener('canplaythrough', function () {
+                attemptPlay();
+            }, { once: true });
+        }
     }
 });
 
