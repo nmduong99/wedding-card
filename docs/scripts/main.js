@@ -174,6 +174,17 @@ $(window).on('load', function () {
     const viewport = document.querySelector('.gallery-carousel-viewport');
     if (!viewport) return;
 
+    /* Clone children for infinite scroll */
+    const track = viewport.querySelector('.gallery-carousel-track');
+    if (track && track.children.length > 0) {
+        // Clone all items
+        const items = Array.from(track.children);
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
+        });
+    }
+
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -247,8 +258,8 @@ $(document).ready(function () {
     var isPlaying = false;
 
     if (audio) {
-        // Set volume to 0.5
-        audio.volume = 0.5;
+        // Set volume to 0.1
+        audio.volume = 0.1;
 
         // Toggle Play/Pause on click
         controlBtn.on('click', function () {
@@ -285,11 +296,11 @@ function copyToClipboard(text) {
     var tempInput = document.createElement("textarea");
     tempInput.value = text;
     document.body.appendChild(tempInput);
-    
+
     // Select the text
     tempInput.select();
     tempInput.setSelectionRange(0, 99999); // For mobile devices
-    
+
     // Copy the text
     try {
         document.execCommand("copy");
@@ -297,7 +308,7 @@ function copyToClipboard(text) {
     } catch (e) {
         console.error("Copy failed", e);
     }
-    
+
     // Remove the temporary element
     document.body.removeChild(tempInput);
 }
