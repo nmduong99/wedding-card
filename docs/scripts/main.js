@@ -278,3 +278,26 @@ $(document).ready(function () {
         }, 5000);
     }
 });
+
+// Copy to clipboard function
+function copyToClipboard(text) {
+    // Create a temporary textarea element
+    var tempInput = document.createElement("textarea");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    
+    // Select the text
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // For mobile devices
+    
+    // Copy the text
+    try {
+        document.execCommand("copy");
+        alert("Đã sao chép số tài khoản: " + text);
+    } catch (e) {
+        console.error("Copy failed", e);
+    }
+    
+    // Remove the temporary element
+    document.body.removeChild(tempInput);
+}
