@@ -259,7 +259,7 @@ $(document).ready(function () {
 
     if (audio) {
         // Set volume to 0.1
-        audio.volume = 0.1;
+        audio.volume = 0.05;
         audio.loop = true;
 
         // Toggle Play/Pause on click
@@ -275,28 +275,28 @@ $(document).ready(function () {
             }
         });
 
-        // Auto-play when loaded (with 1s delay)
-        var attemptPlay = function () {
+        // Auto-play on first user interaction with 1s delay
+        var onFirstInteraction = function () {
+            // Remove listeners so this only runs once
+            $(document).off('click touchstart scroll', onFirstInteraction);
+
             setTimeout(function () {
-                var playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(function () {
-                        isPlaying = true;
-                        controlBtn.addClass('fa-spin');
-                    }).catch(function (error) {
-                        console.log('Auto-play prevented. User interaction needed.');
-                    });
+                // Only play if not already playing
+                if (audio.paused) {
+                    var playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(function () {
+                            isPlaying = true;
+                            controlBtn.addClass('fa-spin');
+                        }).catch(function (error) {
+                            console.log('Auto-play prevented:', error);
+                        });
+                    }
                 }
             }, 1000);
         };
 
-        if (audio.readyState > 3) {
-            attemptPlay();
-        } else {
-            audio.addEventListener('canplaythrough', function () {
-                attemptPlay();
-            }, { once: true });
-        }
+        $(document).on('click touchstart scroll', onFirstInteraction);
     }
 });
 
