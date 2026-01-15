@@ -275,28 +275,28 @@ $(document).ready(function () {
             }
         });
 
-        // Auto-play on first user interaction with 1s delay
-        var onFirstInteraction = function () {
-            // Remove listeners so this only runs once
-            $(document).off('click touchstart scroll', onFirstInteraction);
-
-            setTimeout(function () {
-                // Only play if not already playing
-                if (audio.paused) {
-                    var playPromise = audio.play();
-                    if (playPromise !== undefined) {
-                        playPromise.then(function () {
-                            isPlaying = true;
-                            controlBtn.addClass('fa-spin');
-                        }).catch(function (error) {
-                            console.log('Auto-play prevented:', error);
-                        });
-                    }
+        // Landing Page Music Button Logic
+        $('#landing-music-btn').on('click', function () {
+            if (audio.paused) {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function () {
+                        isPlaying = true;
+                        controlBtn.addClass('fa-spin');
+                    }).catch(function (error) {
+                        console.log('Play prevented:', error);
+                    });
                 }
-            }, 1000);
-        };
+            }
+            $('#landing-music-container').fadeOut(800);
 
-        $(document).on('click touchstart scroll', onFirstInteraction);
+            // Scroll to next section
+            $('html, body').animate({
+                scrollTop: $("#events").offset().top - 10
+            }, 1000);
+        });
+
+
     }
 });
 
