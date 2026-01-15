@@ -10067,7 +10067,7 @@ body {
 /* Home Page Style */
 .ww-home-page {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.jpg") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.webp") no-repeat center center;
     background-size: cover;
     height: 100vh;
     min-height: 480px;
