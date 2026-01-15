@@ -11084,6 +11084,8 @@ body {
     font-weight: 600;
     margin-bottom: 5px;
     letter-spacing: 1px;
+    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .qr-holder {
@@ -11162,9 +11164,28 @@ body {
         font-size: 1.5rem;
     }
 
+    /* QR Card responsive styles for tablets */
+    .qr-card-front,
+    .qr-card-back {
+        padding: 12px;
+    }
 
+    .qr-bank-name {
+        font-size: 1rem;
+    }
 
+    .qr-account {
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+    }
 
+    .qr-holder {
+        font-size: 0.85rem;
+    }
+
+    .qr-card-back {
+        min-height: 260px;
+    }
 
     .qr-placeholder,
     .qr-code-img {
@@ -11186,13 +11207,77 @@ body {
         font-size: 2rem;
     }
 
+    /* QR Card responsive styles for small mobile devices */
+    .qr-card-front,
+    .qr-card-back {
+        padding: 10px;
+    }
 
+    .qr-info {
+        padding: 5px;
+    }
 
+    .qr-bank-name {
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+    }
 
+    .qr-account {
+        font-size: 0.95rem;
+        letter-spacing: 0px;
+        margin-bottom: 3px;
+        line-height: 1.3;
+    }
+
+    .qr-holder {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+
+    .qr-card-back {
+        min-height: 240px;
+    }
 
     .qr-placeholder,
     .qr-code-img {
         height: 80px;
+    }
+}
+
+/* Extra small mobile devices (iPhone SE, small Androids) */
+@media (max-width: 375px) {
+    .qr-card-front,
+    .qr-card-back {
+        padding: 8px;
+    }
+
+    .qr-info {
+        padding: 4px;
+    }
+
+    .qr-bank-name {
+        font-size: 0.85rem;
+        margin-bottom: 2px;
+    }
+
+    .qr-account {
+        font-size: 0.85rem;
+        letter-spacing: 0px;
+        margin-bottom: 2px;
+        line-height: 1.2;
+    }
+
+    .qr-holder {
+        font-size: 0.65rem;
+        margin-bottom: 8px;
+    }
+
+    .qr-card-back {
+        min-height: 220px;
+    }
+
+    .qr-code-img {
+        height: 70px;
     }
 }
 
