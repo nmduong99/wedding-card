@@ -10067,7 +10067,7 @@ body {
 /* Home Page Style */
 .ww-home-page {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.webp") no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/DC/NVD01917.webp") no-repeat 52% center;
     background-size: cover;
     height: 100vh;
     min-height: 480px;
@@ -11656,14 +11656,14 @@ body {
 
 /* Landing Music Button */
 .landing-music-btn-container {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /* Changed from absolute */
+    margin: 0 auto 5px auto;
+    /* Center and add space below */
     z-index: 1001;
-    /* Above everything */
     opacity: 1;
     transition: opacity 0.5s ease;
+    text-align: center;
 }
 
 .music-play-btn {
@@ -11672,16 +11672,18 @@ body {
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     color: #fff;
-    padding: 12px 35px;
+    /* Responsive size using clamp */
+    padding: clamp(6px, 1.5vh, 10px) clamp(20px, 4vw, 35px);
     border-radius: 50px;
     cursor: pointer;
     font-family: 'Noto Serif KR', serif;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 1.3vw, 1rem);
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     outline: none !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -11689,17 +11691,15 @@ body {
 }
 
 .music-play-btn i {
-    font-size: 0.8rem;
+    font-size: 0.9em;
 }
 
 .music-play-btn:hover {
     background: rgba(245, 138, 119, 0.9);
-    /* Pink accent */
     border-color: rgba(245, 138, 119, 1);
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(245, 138, 119, 0.4);
     animation: none;
-    /* Stop pulse on hover */
 }
 
 @keyframes btnPulse {
