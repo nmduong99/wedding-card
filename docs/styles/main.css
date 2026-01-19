@@ -11021,6 +11021,7 @@ body {
     border-radius: 8px;
     border: 2px dashed #f0c0c0;
     display: inline-block;
+    /* Subtle glow animation runs 3 times to draw initial attention */
     animation: subtitle-glow 2s ease-in-out 3;
 }
 
@@ -11036,6 +11037,7 @@ body {
 .gift-box-subtitle i {
     color: #8B4557;
     margin-right: 8px;
+    /* Icon pulses 4 times to draw attention */
     animation: icon-pulse 1.5s ease-in-out 4;
 }
 
@@ -11057,6 +11059,7 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 20px;
+    /* Pulse animation runs 3 times on page load to draw attention */
     animation: qr-card-pulse 2s ease-in-out 3;
 }
 
@@ -11127,6 +11130,7 @@ body {
     white-space: nowrap;
 }
 
+/* Icon bounces infinitely but only visible during hover (temporary state) */
 .qr-click-indicator i {
     font-size: 1.2rem;
     animation: point-bounce 1s ease-in-out infinite;
