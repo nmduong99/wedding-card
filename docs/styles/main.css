@@ -11411,6 +11411,25 @@ body {
     }
 }
 
+/* Accessibility: Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .qr-card {
+        animation: none;
+    }
+
+    .gift-box-subtitle {
+        animation: none;
+    }
+
+    .gift-box-subtitle i {
+        animation: none;
+    }
+
+    .qr-click-indicator i {
+        animation: none;
+    }
+}
+
 /* Ceremony Custom Styles */
 .ceremony-image-container {
     display: flex;
