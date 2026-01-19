@@ -11012,9 +11012,40 @@ body {
 
 .gift-box-subtitle {
     font-family: 'Noto Serif KR', serif;
-    font-size: 0.95rem;
-    color: #888;
+    font-size: 1.1rem;
+    color: #8B4557;
     margin-bottom: 30px;
+    font-weight: 600;
+    background: #fff5f5;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 2px dashed #f0c0c0;
+    display: inline-block;
+    animation: subtitle-glow 2s ease-in-out infinite;
+}
+
+@keyframes subtitle-glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(139, 69, 87, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(139, 69, 87, 0.4);
+    }
+}
+
+.gift-box-subtitle i {
+    color: #8B4557;
+    margin-right: 8px;
+    animation: icon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 /* QR Toggle Section */
@@ -11024,12 +11055,24 @@ body {
 
 .qr-card {
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 20px;
+    animation: qr-card-pulse 2s ease-in-out infinite;
+}
+
+@keyframes qr-card-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(139, 69, 87, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(139, 69, 87, 0);
+    }
 }
 
 .qr-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
+    animation: none;
+    box-shadow: 0 8px 25px rgba(139, 69, 87, 0.3);
 }
 
 .qr-card-front,
@@ -11038,6 +11081,14 @@ body {
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f0e6e6;
+}
+
+.qr-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .qr-person-image {
@@ -11046,7 +11097,52 @@ body {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.qr-card:hover .qr-person-image {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+
+.qr-click-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(139, 69, 87, 0.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+.qr-click-indicator i {
+    font-size: 1.2rem;
+    animation: point-bounce 1s ease-in-out infinite;
+}
+
+@keyframes point-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.qr-card:hover .qr-click-indicator {
+    opacity: 1;
 }
 
 #groom-front .qr-person-image {
@@ -11164,6 +11260,20 @@ body {
         font-size: 1.5rem;
     }
 
+    .gift-box-subtitle {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+
+    .qr-click-indicator {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+
+    .qr-click-indicator span {
+        display: inline;
+    }
+
     /* QR Card responsive styles for tablets */
     .qr-card-front,
     .qr-card-back {
@@ -11207,6 +11317,16 @@ body {
         font-size: 2rem;
     }
 
+    .gift-box-subtitle {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .qr-click-indicator {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+    }
+
     /* QR Card responsive styles for small mobile devices */
     .qr-card-front,
     .qr-card-back {
@@ -11246,6 +11366,16 @@ body {
 
 /* Extra small mobile devices (iPhone SE, small Androids) */
 @media (max-width: 375px) {
+    .gift-box-subtitle {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    .qr-click-indicator {
+        padding: 6px 10px;
+        font-size: 0.65rem;
+    }
+
     .qr-card-front,
     .qr-card-back {
         padding: 8px;

@@ -499,7 +499,10 @@
                     <img src="./images/DC/NVD01716.webp" alt="Couple walking" class="img-fluid gift-couple-image"
                         style="object-position: 50% 100%;">
                 </div>
-                <p class="gift-box-subtitle">Nhấn vào ảnh để xem thông tin chuyển khoản</p>
+                <p class="gift-box-subtitle">
+                    <i class="fa fa-hand-pointer-o"></i> 
+                    <strong>Nhấn vào ảnh bên dưới để xem QR Code & thông tin chuyển khoản</strong>
+                </p>
 
                 <!-- QR Code Toggle Section -->
                 <div class="qr-toggle-section">
@@ -508,7 +511,13 @@
                         <div class="col-6 col-md-4">
                             <div class="qr-card" onclick="toggleQR('groom')">
                                 <div class="qr-card-front" id="groom-front">
-                                    <img src="./images/DC/NVD01264.webp" alt="Groom" class="qr-person-image">
+                                    <div class="qr-image-wrapper">
+                                        <img src="./images/DC/NVD01264.webp" alt="Groom" class="qr-person-image">
+                                        <div class="qr-click-indicator">
+                                            <i class="fa fa-hand-pointer-o"></i>
+                                            <span>Nhấn để xem QR</span>
+                                        </div>
+                                    </div>
                                     <p class="qr-person-name">Chú rể</p>
                                 </div>
                                 <div class="qr-card-back" id="groom-back" style="display: none;">
@@ -528,7 +537,13 @@
                         <div class="col-6 col-md-4">
                             <div class="qr-card" onclick="toggleQR('bride')">
                                 <div class="qr-card-front" id="bride-front">
-                                    <img src="./images/DC/NVD01256.webp" alt="Bride" class="qr-person-image">
+                                    <div class="qr-image-wrapper">
+                                        <img src="./images/DC/NVD01256.webp" alt="Bride" class="qr-person-image">
+                                        <div class="qr-click-indicator">
+                                            <i class="fa fa-hand-pointer-o"></i>
+                                            <span>Nhấn để xem QR</span>
+                                        </div>
+                                    </div>
                                     <p class="qr-person-name">Cô dâu</p>
                                 </div>
                                 <div class="qr-card-back" id="bride-back" style="display: none;">
