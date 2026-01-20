@@ -184,18 +184,21 @@ $(window).on('load', function () {
         });
     }
 
-    let autoScrollSpeed = 0.3; // Slower, smoother speed
+    // Configuration constants
+    const AUTO_SCROLL_SPEED = 0.3; // Pixels per frame - slower for smoother animation
+    const SCROLL_RESUME_DELAY = 2000; // Milliseconds to wait before resuming auto-scroll
+    const TRANSITION_BUFFER = 1; // Pixel buffer for seamless infinite loop transition
+    
     let animationId;
     let isPaused = false;
 
     // Smooth infinite scroll animation
     function autoScroll() {
         if (!isPaused) {
-            viewport.scrollLeft += autoScrollSpeed;
+            viewport.scrollLeft += AUTO_SCROLL_SPEED;
             // Seamless reset when reached halfway through cloned content
-            // Using a small buffer to make the transition imperceptible
             const halfWidth = viewport.scrollWidth / 2;
-            if (viewport.scrollLeft >= halfWidth - 1) {
+            if (viewport.scrollLeft >= halfWidth - TRANSITION_BUFFER) {
                 viewport.scrollLeft = viewport.scrollLeft - halfWidth;
             }
         }
@@ -221,7 +224,7 @@ $(window).on('load', function () {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
             isPaused = false;
-        }, 2000); // Resume after 2 seconds of no scrolling
+        }, SCROLL_RESUME_DELAY);
     });
 });
 
