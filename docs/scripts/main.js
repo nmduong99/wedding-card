@@ -192,9 +192,11 @@ $(window).on('load', function () {
     function autoScroll() {
         if (!isPaused) {
             viewport.scrollLeft += autoScrollSpeed;
-            // Reset when reached halfway (cloned content)
-            if (viewport.scrollLeft >= (viewport.scrollWidth / 2)) {
-                viewport.scrollLeft = 0;
+            // Seamless reset when reached halfway through cloned content
+            // Using a small buffer to make the transition imperceptible
+            const halfWidth = viewport.scrollWidth / 2;
+            if (viewport.scrollLeft >= halfWidth - 1) {
+                viewport.scrollLeft = viewport.scrollLeft - halfWidth;
             }
         }
         animationId = requestAnimationFrame(autoScroll);

@@ -11773,6 +11773,7 @@ body {
     /* Polaroid bottom padding */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    scroll-snap-align: start; /* Snap to card start */
 }
 
 .gallery-card:hover {
@@ -11838,9 +11839,7 @@ body {
     width: max-content;
 }
 
-.gallery-card {
-    scroll-snap-align: start; /* Snap to card start */
-}
+/* Gallery carousel track */
 
 /* Fix top alignment for Gift Box and Thank You images to show heads */
 .gift-box-image img,
