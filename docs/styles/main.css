@@ -11763,22 +11763,7 @@ body {
 }
 
 /* Drifting Carousel Gallery */
-.gallery-carousel-viewport {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    padding: 20px 0;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.gallery-carousel-track {
-    display: flex;
-    width: max-content;
-    animation: scroll-left 40s linear infinite;
-    gap: 30px;
-    padding: 20px 0;
-}
+/* Gallery carousel styles moved to bottom of file for consistency */
 
 .gallery-card {
     flex: 0 0 auto;
@@ -11788,6 +11773,7 @@ body {
     /* Polaroid bottom padding */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    scroll-snap-align: start; /* Snap to card start */
 }
 
 .gallery-card:hover {
@@ -11803,23 +11789,6 @@ body {
     display: block;
 }
 
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-
-    /* Assumes track contains 2 identical sets */
-}
-
-/* Pause on hover */
-.gallery-carousel-track:hover {
-    animation-play-state: paused;
-}
-
 /* Decorative Border Container from Reference */
 .gallery-border-container {
     border: 1px solid #d4af37;
@@ -11829,44 +11798,33 @@ body {
     position: relative;
 }
 
-
-/* Adjust speed for large gallery */
-.gallery-carousel-track {
-    animation-duration: 240s !important;
-    /* Slower for many images */
-}
-
-/* Manual Swipe + Auto Scroll Styles */
+/* Optimized Gallery Scroll Styles */
 .gallery-carousel-viewport {
     overflow-x: auto;
     overflow-y: hidden;
-    cursor: grab;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE 10+ */
-    /* Remove mask to prevent interfering with interaction visibility at edges if needed */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    scroll-behavior: smooth; /* Native smooth scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-snap-type: x proximity; /* Gentle snap alignment */
+    cursor: grab; /* Indicate draggable */
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.gallery-carousel-viewport::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
+.gallery-carousel-viewport:active {
+    cursor: grabbing; /* Show grabbing while dragging */
 }
 
-.gallery-carousel-viewport:active {
-    cursor: grabbing;
+.gallery-carousel-viewport::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
 .gallery-carousel-track {
-    animation: none !important;
-    /* Disable CSS animation */
     display: flex;
     gap: 30px;
     padding: 20px 0;
     width: max-content;
-    /* Determine width dynamically or let content dictate */
 }
 
 /* Fix top alignment for Gift Box and Thank You images to show heads */

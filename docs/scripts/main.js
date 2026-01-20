@@ -169,15 +169,14 @@ function toggleGallery() {
     }
 }
 
-/* Carousel Logic */
+/* Optimized Carousel Logic - Auto-scroll with Drag Support */
 $(window).on('load', function () {
     const viewport = document.querySelector('.gallery-carousel-viewport');
     if (!viewport) return;
 
-    /* Clone children for infinite scroll */
+    /* Clone children for infinite scroll effect */
     const track = viewport.querySelector('.gallery-carousel-track');
     if (track && track.children.length > 0) {
-        // Clone all items
         const items = Array.from(track.children);
         items.forEach(item => {
             const clone = item.cloneNode(true);
@@ -185,69 +184,91 @@ $(window).on('load', function () {
         });
     }
 
+    // Configuration constants
+    const AUTO_SCROLL_SPEED = 0.3; // Pixels per frame - slower for smoother animation
+    const SCROLL_RESUME_DELAY = 2000; // Milliseconds to wait before resuming auto-scroll
+    const TRANSITION_BUFFER = 1; // Pixel buffer for seamless infinite loop transition
+    const DRAG_MULTIPLIER = 2; // Scroll speed multiplier for drag
+    
+    let animationId;
+    let isPaused = false;
     let isDown = false;
     let startX;
     let scrollLeft;
-    let autoScrollSpeed = 0.5; // Adjust speed here
-    let animationId;
-    let isHovering = false;
 
-    // infinite scroll logic
-    function step() {
-        if (!isDown && !isHovering) {
-            viewport.scrollLeft += autoScrollSpeed;
-            // Reset if reached half (assuming 2 duplicate sets)
-            if (viewport.scrollLeft >= (viewport.scrollWidth / 2)) {
-                viewport.scrollLeft = 0;
+    // Smooth infinite scroll animation
+    function autoScroll() {
+        if (!isPaused && !isDown) {
+            viewport.scrollLeft += AUTO_SCROLL_SPEED;
+            // Seamless reset when reached halfway through cloned content
+            const halfWidth = viewport.scrollWidth / 2;
+            if (viewport.scrollLeft >= halfWidth - TRANSITION_BUFFER) {
+                viewport.scrollLeft = viewport.scrollLeft - halfWidth;
             }
         }
-        animationId = requestAnimationFrame(step);
+        animationId = requestAnimationFrame(autoScroll);
     }
-    // Start auto scroll
-    animationId = requestAnimationFrame(step);
+    
+    // Start auto-scroll
+    animationId = requestAnimationFrame(autoScroll);
 
-    // Mouse Events
+    // Pause auto-scroll on hover for better UX
+    viewport.addEventListener('mouseenter', () => {
+        isPaused = true;
+    });
+    
+    viewport.addEventListener('mouseleave', () => {
+        isPaused = false;
+        isDown = false;
+    });
+
+    // Mouse drag events for desktop
     viewport.addEventListener('mousedown', (e) => {
         isDown = true;
-        viewport.classList.add('active');
         startX = e.pageX - viewport.offsetLeft;
         scrollLeft = viewport.scrollLeft;
-        // cancelAnimationFrame(animationId); // Optional: stop auto loop while dragging, but we usually handle in Step via flag
     });
-    viewport.addEventListener('mouseleave', () => {
-        isDown = false;
-        isHovering = false;
-        viewport.classList.remove('active');
-    });
+
     viewport.addEventListener('mouseup', () => {
         isDown = false;
-        viewport.classList.remove('active');
     });
+
     viewport.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - viewport.offsetLeft;
-        const walk = (x - startX) * 2; // Scroll-fast multiplier
+        const walk = (x - startX) * DRAG_MULTIPLIER;
         viewport.scrollLeft = scrollLeft - walk;
     });
-    // Touch Events for Mobile
+
+    // Touch events for mobile
     viewport.addEventListener('touchstart', (e) => {
         isDown = true;
         startX = e.touches[0].pageX - viewport.offsetLeft;
         scrollLeft = viewport.scrollLeft;
     });
+
     viewport.addEventListener('touchend', () => {
         isDown = false;
     });
+
     viewport.addEventListener('touchmove', (e) => {
         if (!isDown) return;
         const x = e.touches[0].pageX - viewport.offsetLeft;
-        const walk = (x - startX) * 2;
+        const walk = (x - startX) * DRAG_MULTIPLIER;
         viewport.scrollLeft = scrollLeft - walk;
     });
-    // Hover pause
-    viewport.addEventListener('mouseenter', () => {
-        isHovering = true;
+
+    // Pause when user manually scrolls (wheel)
+    let scrollTimeout;
+    viewport.addEventListener('scroll', () => {
+        if (!isDown) { // Only pause for wheel scroll, not drag
+            isPaused = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isPaused = false;
+            }, SCROLL_RESUME_DELAY);
+        }
     });
 });
 
