@@ -11789,20 +11789,6 @@ body {
     display: block;
 }
 
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-
-    /* Assumes track contains 2 identical sets */
-}
-
-/* Pause on hover - moved to consolidated section */
-
 /* Decorative Border Container from Reference */
 .gallery-border-container {
     border: 1px solid #d4af37;
@@ -11811,9 +11797,6 @@ body {
     margin: 20px 0;
     position: relative;
 }
-
-
-/* Consolidated animation duration */
 
 /* Optimized Gallery Scroll Styles */
 .gallery-carousel-viewport {
@@ -11838,8 +11821,6 @@ body {
     padding: 20px 0;
     width: max-content;
 }
-
-/* Gallery carousel track */
 
 /* Fix top alignment for Gift Box and Thank You images to show heads */
 .gift-box-image img,
