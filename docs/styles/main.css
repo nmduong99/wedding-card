@@ -11763,22 +11763,7 @@ body {
 }
 
 /* Drifting Carousel Gallery */
-.gallery-carousel-viewport {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    padding: 20px 0;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.gallery-carousel-track {
-    display: flex;
-    width: max-content;
-    animation: scroll-left 40s linear infinite;
-    gap: 30px;
-    padding: 20px 0;
-}
+/* Gallery carousel styles moved to bottom of file for consistency */
 
 .gallery-card {
     flex: 0 0 auto;
@@ -11815,10 +11800,7 @@ body {
     /* Assumes track contains 2 identical sets */
 }
 
-/* Pause on hover */
-.gallery-carousel-track:hover {
-    animation-play-state: paused;
-}
+/* Pause on hover - moved to consolidated section */
 
 /* Decorative Border Container from Reference */
 .gallery-border-container {
@@ -11830,43 +11812,34 @@ body {
 }
 
 
-/* Adjust speed for large gallery */
-.gallery-carousel-track {
-    animation-duration: 240s !important;
-    /* Slower for many images */
-}
+/* Consolidated animation duration */
 
-/* Manual Swipe + Auto Scroll Styles */
+/* Optimized Gallery Scroll Styles */
 .gallery-carousel-viewport {
     overflow-x: auto;
     overflow-y: hidden;
-    cursor: grab;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE 10+ */
-    /* Remove mask to prevent interfering with interaction visibility at edges if needed */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    scroll-behavior: smooth; /* Native smooth scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-snap-type: x proximity; /* Gentle snap alignment */
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .gallery-carousel-viewport::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
-}
-
-.gallery-carousel-viewport:active {
-    cursor: grabbing;
+    display: none; /* Chrome/Safari */
 }
 
 .gallery-carousel-track {
-    animation: none !important;
-    /* Disable CSS animation */
     display: flex;
     gap: 30px;
     padding: 20px 0;
     width: max-content;
-    /* Determine width dynamically or let content dictate */
+}
+
+.gallery-card {
+    scroll-snap-align: start; /* Snap to card start */
 }
 
 /* Fix top alignment for Gift Box and Thank You images to show heads */
