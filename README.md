@@ -1,131 +1,66 @@
-# 최원영과 이소민의 결혼식 모바일 청첩장
-![date](https://img.shields.io/date/1558189800.svg?style=for-the-badge)
+# Minh Dương & Linh Chi — Thiệp cưới
 
-이 repository는 결혼식 초대를 위한 모바일청첩장입니다. 이 repository가 마음에 드신다면 star과 fork 많이 많이 부탁드립니다. 축하 메시지는 pull request로 받습니다. :)
+Website thiệp cưới của Minh Dương và Linh Chi, lưu giữ những khoảnh khắc và hành trình của chúng mình đến ngày chung một mái nhà.
 
-축하메시지 남기는 방법은 [github에서 pullrequest하는 방법(바로가기)](https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/) 을 참고하세요 👍
+**Xem thiệp:** [nmduong99.github.io/wedding-card](https://nmduong99.github.io/wedding-card/)
 
-![메인사진](https://github.com/AndersonChoi/wedding-card/raw/master/docs/images/pic2.jpeg)
+## Nội dung
 
-## 예식정보
+- Thiệp mời, thời gian và địa điểm tổ chức tại nhà trai và nhà gái, kèm liên kết Google Maps.
+- Album ảnh cưới với gallery cuộn ngang và trình xem ảnh phóng to.
+- Câu chuyện của chúng mình qua các cột mốc trong mục **Our Journey**.
+- Nhạc nền khi mở thiệp, bộ đếm đến ngày cưới và lời cảm ơn.
+- Hộp mừng cưới với mã QR và thao tác sao chép số tài khoản.
 
-* 날짜 : 2019년 5월 18일 14시 30분
-* 장소 : 부산광역시 해운대구 센텀시티 센텀사이언스파크 23층
-* 청첩장 url : https://andersonchoi.github.io/wedding-card/
+## Công nghệ
 
-## 축하의 말
+Website tĩnh sử dụng HTML, CSS và JavaScript, cùng jQuery, Bootstrap và các thư viện hỗ trợ hiệu ứng, xem ảnh. Không cần cài Node.js, không có bước build hay backend riêng.
 
-### 한경수
+Một số thư viện và font được tải từ CDN, vì vậy cần kết nối Internet để xem đầy đủ giao diện.
 
-아는 후배가 깃허브 청첩장이라고 하여 링크타고 들어왔습니다. 저는 07 학번 한경수 입니다. 동문의 github 청첩장을 보니 새롭고, 굉장히 특이하고 재밌는 청첩장이네요.
+## Chạy trên máy
 
-두 사람의 소중한 결합을 축하하며 더 없이 행복한 부부 되시기를 바랍니다. 
+Cần Python 3. Tại thư mục gốc của repository, chạy:
 
-### 이병근
+```bash
+python3 -m http.server 8000 --directory docs
+```
 
-LGTM 👍
+Mở [http://localhost:8000](http://localhost:8000) trong trình duyệt. Sửa các file trong `docs/` rồi tải lại trang để xem thay đổi.
 
-### 최지영
+## Cấu trúc
 
-소민이 결혼 너무너무 축하해! 사진도 소민이도 햇살처럼 너무 이쁘다! 앞으로 다가올 날들도 모두 환하게 비추어 나갈것 같아 ㅎㅎ 늘 지금처럼, 지금보다 더 행복하길!  
+```text
+docs/
+├── index.html             # Nội dung thiệp, lịch tổ chức, gallery, hành trình và hộp mừng cưới
+├── styles/main.css        # Giao diện chính và bố cục responsive
+├── css/journey.css        # Giao diện phần Our Journey
+├── css/custom-lightbox.css
+├── scripts/main.js        # Bộ đếm, gallery, nhạc và tương tác trên trang
+├── js/custom-lightbox.js  # Trình xem ảnh
+├── images/
+│   ├── DC/                # Album ảnh của chúng mình
+│   ├── journey/           # Ảnh cho các cột mốc
+│   └── gift/              # Mã QR mừng cưới
+└── mus.mp3                # Nhạc nền
+```
 
-### 김경수
-특별한 청첩장이네요! 두분 결혼 축하드리고 행복하게 사세요. 
+## Cập nhật nội dung
 
-### 익명의 회사 사원
-사우님 결혼 축하드려요~ 너무 예쁘네용 *_*
+- **Tên, lời mời, lịch tổ chức, địa chỉ và câu chuyện:** sửa `docs/index.html`.
+- **Ngày đếm ngược:** sửa `WEDDING_DATE` trong `docs/scripts/main.js`, đồng thời cập nhật ngày hiển thị trong `docs/index.html`.
+- **Ảnh và mã QR:** thay file trong `docs/images/` và cập nhật đường dẫn tương ứng trong `docs/index.html`. Thông tin ngân hàng và giá trị sao chép số tài khoản cũng được khai báo tại đây.
+- **Nhạc nền:** thay `docs/mus.mp3`, hoặc đổi thuộc tính `src` của phần tử audio trong `docs/index.html`.
+- **Giao diện:** sửa `docs/styles/main.css`, `docs/css/journey.css` và `docs/css/custom-lightbox.css`.
 
-### 장준영
-개발자 부부아니랄까봐 청첩장도 이렇게 아름답게 만드셨네요ㅋㅋㅋ
-언제나 행복하시길 바라요~ 결혼 축하합니당 ^^
+## Triển khai
 
-### 김채영
+Website được xuất bản bằng **GitHub Pages** từ thư mục **`/docs`** trên branch **`main`**.
 
-sudo forever start happyMarriage.js
+Trong **Settings → Pages → Build and deployment**, chọn **Deploy from a branch**, branch **`main`**, thư mục **`/docs`**. Các thay đổi được push lên `main` sẽ được GitHub Pages tự động triển khai tại:
 
-### 옌
-청첩장이 너무 재밌어여 ㅋㅋㅋㅋㅋ이런 청첩장은 처음본다요 결혼축하해용 울언니울형부>_<
+**[https://nmduong99.github.io/wedding-card/](https://nmduong99.github.io/wedding-card/)**
 
-### 임채빈
-나도 나중에 이렇게만들어야지 ㅎㅎㅎㅎ 축하합니다!!!
+## Nguồn gốc
 
-### 김지혁
-결혼 축하합니다. 오래오래 행복하게 사세요^^
-
-### 원영이랑 쪼금 친한 누나
-원영아 결혼 정말 축하하구 신부도 정말 이쁘다 ㅎ 잘살아 히힛
-
-### 부산대 백수
-원영이형 소민이 결혼 정말 축하드려요!!!, while(true) { 최원영 = 이소민 = :heart:; }
-
-### 쿠팡X 김범석
-원영씨 축하해요~ 
-청첩장 정말 잘 만들었네 ㅋㅋㅋㅋㅋ
-코드 쓰고 싶게 만드는 청첩장이야 ㅋㅋㅋ
-val choileeMarriage = Marriage.Builder()
-  .addEvent("결혼식")
-  .addLocation("부산광역시 해운대구 센텀시티 센텀사이언스파크 23층")
-  .addDateTime("2019년 5월 18일 14시 30분")
-  .build();
-  
-### 한정현 (원영님 같은팀 동료)  
-원영님 결혼 축하 드립니다 :) 청첩장도 이쁘네요^~^ 행복하게 사세요 !!   
-
-### 송혜영
-풀리퀘로 결혼 축하 인사 남기긴 처음이네요 ㅋㅋ 원영님 결혼 축하해요!
-
-### 조진영 (똑같은 팀 동료)
-축하해요~ 그냥 개발자야 개발자~ㅎㅎ
-
-### 임유빈 (위 사람 맞은 편 앉은 사람)
-경) 결 혼 축 하 (축
-
-### 정태양
-<html>
-    <head>
-        <style type="text/css">
-          .celebrtion {color: blue;}
-        </style>
-    </head>
-    <body>
-        <div class="celebration">원영이형! 결혼 축하드려요!!!</div>
-        <div class="text">
-            github으로 청첩장 만드는 사람 처음봤어요 ㅋㅋㅋㅋ 진짜 잘 만들었고<br>
-            아이디어가 너무 좋은거 같아요 저도 나중에 사용해야겠어요ㅎㅎ<br>
-            다시 한번 결혼 축하드리고 행복하세요!!!!!
-        </div>
-    </body>
-</html>
-
-### 임승민 (전직장 동료)
-cat << EOF\
-원영이형 결혼 정말 축하해!!\
-오래오래 행복하게 살아~~\
-EOF
-
-### 김성현
-너무너무 멋진 청첩장!
-원영이 소민이 결혼 진심으로 축하해!!
-
-### 박정빈
-행님 형수님 결혼 축하해요 \^^/
-오래오래 행복하세요 :)
-
-### 권준영(원영맴 전직장 동료)
-우와 신기한 청첩장이네요. 결혼 축하합니다.
-
-         mMm  _[_]_
-        /(_)\  (_)
-       //)^(\\//:\\
-      /(/&@&\)\|~|/
-     / /-~`~-\ |||
-     `/       \|||
-     `--------'-'-- 원영 & 소민
-
-### 서재원
-여기부터는 재워니의 기가막힌 축하메시지~~ ٩( ᐛ )و
-<marquee direction="left">결혼을 너무너무 축하해요!!!!!!!</marquee>
-특별한 깃허브 청첩장과 부산 결혼식이라니!!!! (๑˃̵ᴗ˂̵)
-나도 준영님처럼 예쁜 그림을 그리고 싶어!!!! 키키
-사진도 너무 예뻐요~!!!!!!!!!!!!! 평생 행복하세요!!!!!!!!!!!!
-결혼식 마치면 떠데해요~~ (*'▽'*)
+Dự án bắt đầu từ [AndersonChoi/wedding-card](https://github.com/AndersonChoi/wedding-card). Phiên bản này đã được cá nhân hóa cho Minh Dương và Linh Chi với nội dung tiếng Việt, ảnh cưới, hành trình, gallery và hộp mừng cưới riêng.
