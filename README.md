@@ -55,9 +55,9 @@ docs/
 
 ## Triển khai
 
-Website được xuất bản bằng **GitHub Pages** từ thư mục **`/docs`** trên branch **`main`**.
+`main` là branch mặc định và đã tích hợp codebase từ `DC2025`. Website tiếp tục được xuất bản bằng **GitHub Pages** từ thư mục **`/docs`** trên branch **`DC2025`**.
 
-Trong **Settings → Pages → Build and deployment**, chọn **Deploy from a branch**, branch **`main`**, thư mục **`/docs`**. Các thay đổi được push lên `main` sẽ được GitHub Pages tự động triển khai tại:
+Trong **Settings → Pages → Build and deployment**, chọn **Deploy from a branch**, branch **`DC2025`**, thư mục **`/docs`**. Các thay đổi được push lên `DC2025` sẽ được GitHub Pages tự động triển khai tại:
 
 **[https://nmduong99.github.io/wedding-card/](https://nmduong99.github.io/wedding-card/)**
 
